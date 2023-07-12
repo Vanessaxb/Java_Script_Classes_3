@@ -2,10 +2,10 @@
 
 //* Hamster
 class Hamster {
-    constructor(owner, name = "", price = 15){
-    this.owner; 
-    this.name; 
-    this.price
+    constructor(owner = "", name = "", price = 15){
+    this.owner = owner; 
+    this.name = name;
+    this.price = price;
 
 }
 
@@ -17,7 +17,7 @@ eatFood() {
 }
 
 getPrice() {
-    console.log(this.price)
+    return this.price
 }
 }
 
@@ -29,9 +29,8 @@ class Person {
         this.weight = weight;
         this.mood = mood;
         this.hamsters = hamsters;
-        this.bankAcount = bankAccount
+        this.bankAccount = bankAccount;
     }
-
 
     getName() {
         return this.name
@@ -43,51 +42,88 @@ class Person {
         return this.weight
     } 
     greet() {
-        console.log(`${this.name}`)
+        console.log(`Hello ${this.name}`)
     } 
 
     eat() {
-    console.log(this.weight++);
-    console.log(this.mood++);
+        console.log(this.weight++);
+        console.log(this.mood++);
 }
-    eatMoreTimes(num) {
-    return this.eat *= num
-}
-
+   
     exercise() {
-    weight--;
+        console.log(this.weight--);
 }
 
     ageUp() {
-    age++;
-    height++;
-    weight++;
-    mood--;
-    bankAccount += 10;
+        this.age++;
+        this.height++;
+        this.weight++;
+        this.mood--;
+        this.bankAccount += 10;
 }
 
     buyHamster(hamster) {
     this.hamsters.push(hamster);
     this.mood += 10;
-    this.bankAcount += this.hamster.getPrice();
+    this.bankAccount -= hamster.getPrice();
 
 }
 }    
 const Timmy = new Person('Timmy', 5);
-const Gus = new Hamster('owner', 'hamster');
+const Gus = new Hamster('Timmy', 'Gus');
+
+console.log(Timmy);
+
+for (let i =1; i <= 5; i++) {
+    Timmy.eat()
+}
+console.log(Timmy);
+
+for (let j =1; j <= 5; j++) {
+    Timmy.exercise()
+}
+console.log(Timmy);
+
+Timmy.age = 9;
+console.log(Timmy);
+
+Timmy.buyHamster(Gus) 
+console.log(Timmy);
+
+Timmy.age += 15;
+console.log(Timmy);
+
+for (let y =1; y <= 2; y++) {
+    Timmy.eat()
+}
+console.log(Timmy);
+
+for (let x =1; x <= 2; x++) {
+    Timmy.exercise()
+}
+console.log(Timmy);
 
 
-Timmy.eat()
-console.log(this.eat);
-Timmy.exercise()
 
+//* Dinner
+class Dinner {
+    constructor (appetizer = "", entree = "", dessert = "") {
+        this.appetizer = appetizer;
+        this.entree = entree;
+        this.dessert = dessert
+    }
+}
 
+class Chef {
+    dinnerChoice(appetizer, entree, dessert) { 
+        const newDinner = new Dinner (appetizer, entree, dessert)
+        console.log(newDinner);
+    }
 
+} 
+const chef1 = new Chef('appetizer', 'entree', 'dessert')
+// console.log(Chef.dinnerChoice('Salad', 'Pasta', 'Icecream'))
 
-
-
-// buyHamster (hamster) {
-//     this.hamsters.push(this.hamster);
-//     this.mood += 10;
-//     this.bankAccount += this.hamster.getPrice();
-// }
+chef1.dinnerChoice('Salad', 'Pasta', 'Icecream');
+chef1.dinnerChoice('Fries', 'Filet', 'Tiramisu');
+chef1.dinnerChoice('Soup', 'Roast', 'Apple Pie');
